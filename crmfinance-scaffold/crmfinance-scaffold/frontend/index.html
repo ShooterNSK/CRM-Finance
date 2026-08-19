@@ -34,7 +34,7 @@
     display:flex; flex-direction:column;
   }
   .topbar{
-    padding:18px 20px 14px; background:var(--paper);
+    padding:calc(18px + env(safe-area-inset-top, 0px) + 42px) 20px 14px; background:var(--paper);
     border-bottom:1px solid var(--line);
     display:flex; align-items:center; justify-content:space-between;
   }
@@ -345,7 +345,13 @@
 </div>
 
 <script>
-try{ Telegram.WebApp.ready(); Telegram.WebApp.expand(); }catch(e){}
+try{
+  Telegram.WebApp.ready();
+  Telegram.WebApp.expand();
+  if (typeof Telegram.WebApp.setHeaderColor === 'function') {
+    Telegram.WebApp.setHeaderColor('secondary_bg_color');
+  }
+}catch(e){}
 
 const screens = ['onboarding','dashboard','ai','acc','accreg'];
 function goto(name){
