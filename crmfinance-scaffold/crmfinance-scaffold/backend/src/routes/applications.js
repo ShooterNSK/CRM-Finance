@@ -1,0 +1,13 @@
+const express = require('express');
+const pool = require('../db/pool');
+const ApplicationRepository = require('../repositories/application.repository');
+const ApplicationService = require('../services/application.service');
+const createController = require('../controllers/application.controller');
+const config = require('../config/env');
+const telegramAuth = require('../middleware/telegram-auth');
+const router = express.Router();
+const controller = createController({ service: new ApplicationService(new ApplicationRepository(pool)) });
+router.post('/', telegramAuth(config), controller.create);
+router.get('/client/:clientId', telegramAuth(config), controller.list);
+router.patch('/:id/status', telegramAuth(config), controller.updateStatus);
+module.exports = router;
