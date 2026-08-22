@@ -1,16 +1,8 @@
 {
   "name": "crmfinance-backend",
-  "version": "0.1.0",
-  "description": "Backend API для CRM Finance — бухгалтерские услуги для ИП, самозанятых и ООО",
+  "version": "0.2.0",
+  "description": "Backend API для CRM Finance",
   "main": "src/index.js",
-  "scripts": {
-    "start": "node src/index.js",
-    "dev": "node --watch src/index.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "pg": "^8.12.0"
-  }
+  "scripts": { "start": "node src/index.js", "dev": "node --watch src/index.js", "test": "node --test" },
+  "dependencies": { "cors": "^2.8.5", "dotenv": "^16.4.5", "express": "^4.19.2", "pg": "^8.12.0" }
 }
